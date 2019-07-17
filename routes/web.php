@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('blog.index');
 })->name('blog.index');
 
-Route::get('post/{$id}', function(){
+Route::get('post/{id}', function(){
     return view('blog.post');
 })->name('blog.post');
 
@@ -31,6 +31,15 @@ Route::get('admin/create', function(){
     return view('admin.create');
 })->name('admin.create');
 
-Route::get('admin/edit/{$id}', function(){
+Route::post('admin/create',function(){
+    return 'post create is working';
+})->name('admin.create');
+
+
+Route::get('admin/edit/{id}', function(){
     return view('admin.edit');
 })->name('admin.edit');
+
+Route::post('admin/edit',function(){
+    return 'it works';
+})->name('admin.update');

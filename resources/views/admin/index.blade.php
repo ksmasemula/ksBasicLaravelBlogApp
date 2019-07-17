@@ -9,7 +9,7 @@
 <hr>
 <div class="row">
         <div class="col-md-12">
-            <p><strong></strong>Learning Laravel <a href="{{route('admin.edit')}}">Edit</a></p>
+            <p><strong></strong>Learning Laravel <a href="{{route('admin.edit',['id' => 1])}}">Edit</a></p>
         </div>
 </div>
 @endsection
