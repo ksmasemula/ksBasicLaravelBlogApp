@@ -45,8 +45,10 @@ Route::group(['prefix'=>'admin'],function(){
         return view('admin.create');
     })->name('admin.create');
     
-    Route::post('create',function(){
-        return 'post create is working';
+    Route::post('create',function(\Illuminate\Http\Request $request){
+        return redirect()->
+        route('admin.index')->
+        with('info', 'Post created ,new Title : '.$request->input('title'));
     })->name('admin.create');
     
     
@@ -66,7 +68,9 @@ Route::group(['prefix'=>'admin'],function(){
         return view('admin.edit',['post'=>$post]);
     })->name('admin.edit');
     
-    Route::post('edit',function(){
-        return 'it works';
+    Route::post('edit',function(\Illuminate\Http\Request $request){
+        return redirect()->
+        route('admin.index')->
+        with('info', 'Post edited ,new Title : '.$request->input('title'));
     })->name('admin.update');
 });
