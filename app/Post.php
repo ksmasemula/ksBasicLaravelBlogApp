@@ -5,7 +5,7 @@ class Post
     public function getPosts($session)
     {
         if (!$session->has('posts')) {
-            getDummyPosts($session)
+            $this->getDummyPosts($session);
         }
         return $session->get('posts');
     }
