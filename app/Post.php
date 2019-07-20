@@ -5,12 +5,41 @@ class Post
     public function getPosts($session)
     {
         if (!$session->has('posts')) {
-            $this->getDummyPosts($session);
+            $this->createDummyPosts($session);
         }
         return $session->get('posts');
     }
+    //Retrieve a Single post 
+    public function getPost($session,$id)
+    {
+        if (!$session->has('posts')) {
+            $this->createDummyPosts($session);
+        }
+        return $session->get('posts')[$id];
+    }
 
-    private function getDummyPosts($session){
+    // Save a new post
+    public function addPost($session,$title,$content)
+    {
+        if (!$session->has('posts')) {
+            $this->createDummyPosts($session);
+        }
+        $posts= $session->get('posts');
+        array_push($posts,['title'=>$title,'content'=>$content]);
+        return $session->put('posts',$posts);
+    }
+    // Edit existing post
+    public function editPost($session,$id,$title,$content)
+    {
+        if (!$session->has('posts')) {
+            $this->createDummyPosts($session);
+        }
+        $posts= $session->get('posts');
+        $posts[$id]=['title'=>$title,'content'=>$content];
+        return $session->put('posts',$posts);
+    }
+
+    private function createDummyPosts($session){
         $posts=
         [
         
