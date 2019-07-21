@@ -1,9 +1,13 @@
 <?php
 namespace App;
-class Post
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
 {
+    protected $fillable=['title','content'];
     public function getPosts($session)
     {
+
         if (!$session->has('posts')) {
             $this->createDummyPosts($session);
         }
