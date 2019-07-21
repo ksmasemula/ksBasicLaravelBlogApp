@@ -20,6 +20,7 @@
                     value= "{{$post['content']}}">
                 </div>
                 {{csrf_field()}}
+                <input type="hidden" id='post_Id' name='post_Id' value='{{$postId}}'>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
