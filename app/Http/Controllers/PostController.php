@@ -41,8 +41,10 @@ class PostController extends Controller
             'title'=>  'required|min:5',
             'content'=>  'required|min:5'
         ]);
-        $post = new Post();
-        $post->addPost($session, $request->input('title'), $request->input('content'));
+        $post = new Post(['title' => $request->input('title'),
+        'content'=>$request->input('content')]);
+        $post->save();
+        
         return redirect()->
         route('admin.index')->
         with('info', 'Post created ,new Title : '.$request->input('title'));
